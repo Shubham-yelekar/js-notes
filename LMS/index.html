@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer type="module" src="./app.js"></script>
+    <title>📚 Library Management System</title>
+  </head>
+  <body class="font-mono bg-green-100 flex flex-col h-screen">
+    <nav class="bg-green-900 p-4 text-white flex justify-between">
+      <h1 class="text-lg font-bold e">📚 Library Management System</h1>
+      <section>
+        <label for="roleSwitcher">User Role</label>
+        <select
+          id="roleSwitcher"
+          class="bg-green-900 underline font-bold border px-2 py-1"
+        >
+          <option value="member">Member</option>
+          <option value="admin">Admin</option>
+        </select>
+      </section>
+    </nav>
+    <div id="bookSection">
+      <section id="addbookFormWrapper" class="">
+        <form
+          id="addbookForm"
+          action=""
+          class="bg-green-300 p-4 flex flex-col gap-2"
+        >
+          <div>
+            <label for="book_name">Title of the book :</label>
+            <input
+              id="book_title"
+              type="text"
+              class="border border-green-800 bg-green-200"
+              required
+            />
+          </div>
+          <div>
+            <label for="book_author">Name of author :</label>
+            <input
+              id="book_author"
+              type="text"
+              class="border border-green-800 bg-green-200"
+              required
+            />
+          </div>
+          <div>
+            <label for="book_genre">Genre :</label>
+            <input
+              id="book_genre"
+              type="text"
+              class="border border-green-800 bg-green-200"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="bg-green-400 font-bold cursor-pointer hover:bg-green-500"
+          >
+            Add book
+          </button>
+        </form>
+      </section>
+
+      <section id="availableWrapper" class="flex-grow-1 bg-green-200">
+        <h1 class="font-bold text-lg bg-green-400 p-2">Available books</h1>
+        <ul id="availableBookList" class="flex p-2 gap-2"></ul>
+      </section>
+
+      <section id="borrowedWrapper" class="flex-grow-1 bg-green-200">
+        <h1 class="font-bold text-lg bg-green-400 p-2">Borrowed books</h1>
+        <ul id="borrowedBookList" class="flex p-2 gap-2"></ul>
+      </section>
+    </div>
+  </body>
+</html>
