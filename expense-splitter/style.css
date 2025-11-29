@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Departure-Mono";
+  font-display: swap;
+  src: url("./font/DepartureMono-Regular.woff2") format("woff2");
+}
+
+:root {
+  --color-green-1: oklch(62.7% 0.194 149.214);
+  --color-green: oklch(76.5% 0.177 163.223);
+  --color-background-2: oklch(37.1% 0 0);
+  --color-background-1: oklch(55.6% 0 0);
+
+  --color-background: oklch(92.2% 0 0);
+  --color-accent: oklch(75% 0.183 55.934);
+  --font-mono-2: "Departure-Mono", monospace;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: var(--font-mono-2);
+}

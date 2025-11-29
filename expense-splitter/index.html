@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer type="module" src="./app.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <title>Expense Splitter</title>
+  </head>
+  <body class="w-full h-screen">
+    <nav
+      class="flex justify-center items-center p-4 border-b border-[var(--color-green)]"
+    >
+      <h1
+        class="text-xl uppercase text-[var(--color-background-2)] font-mono-2"
+      >
+        Expense Tracker
+      </h1>
+    </nav>
+    <section class="max-w-[1200px] p-8 m-auto mt-4 flex flex-col gap-4">
+      <div class="flex gap-2 justify-between">
+        <div class="bg-white flex-1">
+          <div
+            class="flex justify-center items-center p-2 bg-neutral-300 text-[var(--color-green)]"
+          >
+            <h1 class="uppercase text-[var(--color-background-2)] font-mono-2">
+              Add New User
+            </h1>
+          </div>
+          <div class="p-6">
+            <form action="" id="addUserForm" class="flex flex-col gap-4">
+              <label for="newUser" class="text-[var(--color-background-2)]"
+                >User Name</label
+              >
+              <input
+                id="userInput"
+                type="text"
+                class="p-2 bg-[var(--color-background)] focus:outline-2 focus:outline-[var(--color-green)] focus:bg-[var(--color-background)]"
+                required
+                placeholder="Name"
+              />
+              <button
+                class="p-2 bg-[var(--color-green)] text-white hover:bg-[var(--color-background-1)] cursor-pointer"
+                action="Submit"
+              >
+                Add User ♥
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="bg-white flex-2">
+          <div
+            class="flex justify-center items-center p-2 bg-neutral-300 text-[var(--color-green)]"
+          >
+            <h1 class="uppercase text-[var(--color-background-2)] font-mono-2">
+              Add Expenses
+            </h1>
+          </div>
+          <div class="p-6">
+            <form action="" id="addExpenseForm" class="flex flex-col gap-4">
+              <div class="flex gap-4 justify-between">
+                <div class="flex flex-col gap-4">
+                  <label
+                    for="paidByInput"
+                    class="text-[var(--color-background-2)]"
+                    >Who paid?</label
+                  >
+                  <select
+                    id="paidByInput"
+                    type="text"
+                    class="p-2 w-full bg-[var(--color-background)] focus:outline-2 focus:outline-[var(--color-green)] focus:bg-[var(--color-background)]"
+                    required
+                    placeholder="Name"
+                  ></select>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <label for="newUser" class="text-[var(--color-background-2)]"
+                    >Amount in inr</label
+                  >
+                  <input
+                    id="newUser"
+                    type="number"
+                    class="p-2 bg-[var(--color-background)] focus:outline-2 focus:outline-[var(--color-green)] focus:bg-[var(--color-background)]"
+                    required
+                    placeholder="100"
+                    min="0"
+                  />
+                </div>
+                <div class="flex flex-col gap-4">
+                  <label for="newUser" class="text-[var(--color-background-2)]"
+                    >Description</label
+                  >
+                  <input
+                    id="newUser"
+                    type="text"
+                    class="p-2 bg-[var(--color-background)] focus:outline-2 focus:outline-[var(--color-green)] focus:bg-[var(--color-background)]"
+                    placeholder="eg: Ice-cream"
+                  />
+                </div>
+              </div>
+              <button
+                class="p-2 bg-[var(--color-green)] text-white hover:bg-[var(--color-background-1)] cursor-pointer"
+                action="Submit"
+              >
+                Add Expense ₹
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 justify-between bg-white">
+        <div
+          class="flex justify-center items-center p-2 bg-neutral-300 text-[var(--color-green)]"
+        >
+          <h1 class="uppercase text-[var(--color-background-2)] font-mono-2">
+            Expenses Overview
+          </h1>
+        </div>
+        <div class="flex gap-2 p-4 items-center">
+          <div class="bg-white border border-[var(--color-green-1)] flex-2">
+            <div
+              class="flex justify-center items-center p-2 bg-neutral-300 text-[var(--color-green)]"
+            >
+              <h1
+                class="uppercase text-[var(--color-background-2)] font-mono-2"
+              >
+                All Payment
+              </h1>
+            </div>
+            <div class="p-6 flex-1 h-72"></div>
+          </div>
+          <button
+            class="p-2 bg-[var(--color-green)] text-white hover:bg-[var(--color-background-1)] cursor-pointer"
+          >
+            Split ⟩
+          </button>
+          <div class="bg-white border border-[var(--color-green-1)] flex-2">
+            <div
+              class="flex justify-center items-center p-2 bg-neutral-300 text-[var(--color-green)]"
+            >
+              <h1
+                class="uppercase text-[var(--color-background-2)] font-mono-2"
+              >
+                Who Owes Whom
+              </h1>
+            </div>
+            <div class="p-6 flex-1 h-72"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+  </body>
+</html>
