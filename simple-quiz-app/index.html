@@ -3,7 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Quiz App</title>
   </head>
-  <body></body>
+  <body class="bg-neutral-950 text-neutral-100">
+    <section class="w-96 mx-auto mt-24">
+      <section class="bg-neutral-900 p-2">
+        <div>Score - <span id="score">0</span></div>
+        <div>Questions - <span id="quest">1</span>/5</div>
+      </section>
+      <section class="bg-neutral-800 p-2 select-none">
+        <div id="question-box" class="text-2xl my-4">
+          What is the output of typeof null?
+        </div>
+        <div id="option-box" class="flex flex-col gap-2">
+          <div class="p-2 font-mono">
+            <input type="radio" name="option" value="option-1" id="option-1" />
+            <label class="w-full" for="option-1">"null"</label>
+          </div>
+          <div class="p-2 font-mono">
+            <input type="radio" name="option" value="option-1" id="option-2" />
+            <label for="option-2">"null"</label>
+          </div>
+          <div class="p-2 font-mono">
+            <input type="radio" name="option" value="option-1" id="option-3" />
+            <label for="option-3">"null"</label>
+          </div>
+        </div>
+      </section>
+      <section>
+        <button id="start-btn" class="bg-blue-400 px-4 py-2">Next</button>
+        <button id="next-btn" class="bg-neutral-100 px-4 py-2 text-neutral-800">
+          Start
+        </button>
+      </section>
+    </section>
+    <script src="app.js"></script>
+  </body>
 </html>
