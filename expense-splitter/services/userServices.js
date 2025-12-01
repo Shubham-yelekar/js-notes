@@ -11,6 +11,10 @@ export default class UserService {
     }
 
     const trimmedName = name.trim().toLowerCase();
+
+    if (this.users.has(trimmedName)) {
+      throw new Error("User already exist");
+    }
     const user = new User(trimmedName);
     this.users.set(trimmedName, user);
     return user;

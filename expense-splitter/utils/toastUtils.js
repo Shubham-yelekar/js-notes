@@ -3,7 +3,7 @@ export function showSuccessToast(message) {
     text: message,
     duration: 3000,
     gravity: "bottom",
-  });
+  }).showToast();
 }
 
 export function showErrorToast(message) {
@@ -11,5 +11,8 @@ export function showErrorToast(message) {
     text: message,
     duration: 3000,
     gravity: "bottom",
-  });
+    style: {
+      background: "#e60a0aff",
+    },
+  }).showToast();
 }

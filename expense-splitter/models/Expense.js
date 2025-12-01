@@ -1,12 +1,12 @@
 export default class Expense {
-  constructor(paidBy, amount, description = "No Descriptions") {
+  constructor(paidBy, amount, description = "No Description") {
     if (!paidBy || typeof paidBy !== "string") {
       throw new Error("PaidBy must be a non-empty string");
     }
     if (!amount || typeof amount !== "number" || amount <= 0) {
       throw new Error("amount must be a number");
     }
-    if (!description || typeof description !== "string") {
+    if (typeof description !== "string") {
       throw new Error("description must be a non-empty string");
     }
 

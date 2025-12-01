@@ -11,6 +11,14 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
+    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='100'>🚀</text>
+  </svg>"
+    />
+
     <title>Expense Splitter</title>
   </head>
   <body class="w-full h-screen">
@@ -23,7 +31,11 @@
         Expense Tracker
       </h1>
     </nav>
-    <section class="max-w-[1200px] p-8 m-auto mt-4 flex flex-col gap-4">
+    <section class="max-w-[1200px] p-4 m-auto flex flex-col gap-4">
+      <div>
+        <button id="exportBtn" class="bg-neutral-300 p-2">Export</button>
+        <button class="bg-neutral-300 p-2">Import</button>
+      </div>
       <div class="flex gap-2 justify-between">
         <div class="bg-white flex-1">
           <div
@@ -64,7 +76,7 @@
           </div>
           <div class="p-6">
             <form action="" id="addExpenseForm" class="flex flex-col gap-4">
-              <div class="flex gap-4 justify-between">
+              <div class="flex gap-4 justify-between flex-wrap">
                 <div class="flex flex-col gap-4">
                   <label
                     for="paidByInput"
@@ -80,11 +92,13 @@
                   ></select>
                 </div>
                 <div class="flex flex-col gap-4">
-                  <label for="newUser" class="text-[var(--color-background-2)]"
+                  <label
+                    for="expenseAmtInput"
+                    class="text-[var(--color-background-2)]"
                     >Amount in inr</label
                   >
                   <input
-                    id="newUser"
+                    id="expenseAmtInput"
                     type="number"
                     class="p-2 bg-[var(--color-background)] focus:outline-2 focus:outline-[var(--color-green)] focus:bg-[var(--color-background)]"
                     required
@@ -93,11 +107,13 @@
                   />
                 </div>
                 <div class="flex flex-col gap-4">
-                  <label for="newUser" class="text-[var(--color-background-2)]"
+                  <label
+                    for="expenseDescInput"
+                    class="text-[var(--color-background-2)]"
                     >Description</label
                   >
                   <input
-                    id="newUser"
+                    id="expenseDescInput"
                     type="text"
                     class="p-2 bg-[var(--color-background)] focus:outline-2 focus:outline-[var(--color-green)] focus:bg-[var(--color-background)]"
                     placeholder="eg: Ice-cream"
@@ -133,9 +149,12 @@
                 All Payment
               </h1>
             </div>
-            <div class="p-6 flex-1 h-72"></div>
+            <div class="p-2 flex-1 h-72">
+              <ul id="expenseList" class="flex flex-col gap-2"></ul>
+            </div>
           </div>
           <button
+            id="splitBtn"
             class="p-2 bg-[var(--color-green)] text-white hover:bg-[var(--color-background-1)] cursor-pointer"
           >
             Split ⟩
@@ -150,7 +169,9 @@
                 Who Owes Whom
               </h1>
             </div>
-            <div class="p-6 flex-1 h-72"></div>
+            <div class="p-6 flex-1 h-72">
+              <ul id="resultList" class="flex flex-col gap-2"></ul>
+            </div>
           </div>
         </div>
       </div>
