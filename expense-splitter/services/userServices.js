@@ -42,4 +42,16 @@ export default class UserService {
   clear() {
     this.users.clear();
   }
+
+  importUsers(userData) {
+    if (!Array.isArray(userData)) {
+      throw new Error("User data must be an array");
+    }
+
+    userData.forEach((userData) => {
+      if (userData && userData.name) {
+        this.users.set(userData.name, new User(userData.name));
+      }
+    });
+  }
 }

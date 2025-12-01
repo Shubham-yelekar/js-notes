@@ -7,8 +7,8 @@ class ExpenseApp {
     this.userService = new UserService();
     this.expenseService = new ExpenseService(this.userService);
     this.storageServices = new StorageServices(
-      this.expenseService,
-      this.userService
+      this.userService,
+      this.expenseService
     );
     this.ui = null;
   }

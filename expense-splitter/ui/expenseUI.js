@@ -1,10 +1,10 @@
 import DOMHelper from "./DomHelper.js";
 import { showSuccessToast, showErrorToast } from "../utils/toastUtils.js";
 export default class ExpenseUI {
-  constructor(userService, expenseServices, storageService) {
+  constructor(userService, expenseServices, storageServices) {
     this.userService = userService;
     this.expenseServices = expenseServices;
-    this.storageService = storageService;
+    this.storageServices = storageServices;
     this.initializeElements();
     this.bindEvents();
     this.initializeSelect();
@@ -22,6 +22,8 @@ export default class ExpenseUI {
       splitBtn: DOMHelper.getElementById("splitBtn"),
       resultList: DOMHelper.getElementById("resultList"),
       exportBtn: DOMHelper.getElementById("exportBtn"),
+      importFile: DOMHelper.getElementById("importFile"),
+      importBtn: DOMHelper.getElementById("importBtn"),
     };
   }
 
@@ -40,6 +42,14 @@ export default class ExpenseUI {
 
     this.element.exportBtn.addEventListener("click", () => {
       this.handleExport();
+    });
+
+    this.element.importFile.addEventListener("change", (e) =>
+      this.handleImport(e)
+    );
+
+    this.element.importBtn.addEventListener("click", (e) => {
+      this.element.importFile.click();
     });
   }
   isValidUsername(username) {
@@ -147,10 +157,41 @@ export default class ExpenseUI {
 
   handleExport() {
     try {
-      this.storageService.exportData();
+      this.storageServices.exportData();
       showSuccessToast("exported");
     } catch (error) {
       console.error("export error", error);
     }
+  }
+
+  async handleImport(e) {
+    try {
+      const file = e.target.files[0];
+      if (!file) return;
+      await this.storageServices.importData(file);
+      this.refreshUI();
+      showSuccessToast("Data imported successfully");
+      console.log("Data imported successfully");
+    } catch (error) {
+      showErrorToast(`Import failed: ${error.message}`);
+      console.error("Import error:", error);
+    } finally {
+      e.target.value = "";
+    }
+  }
+
+  refreshUI() {
+    DOMHelper.clearElements(this.element.paidByInput);
+    const defaultOption = DOMHelper.createOption("Select User", "");
+    this.element.paidByInput.add(defaultOption);
+
+    this.userService.getAllUserNames().forEach((name) => {
+      this.addUserToSelect(name);
+    });
+    DOMHelper.clearElements(this.element.expenseList);
+    this.expenseServices.getAllExpenses().forEach((expense) => {
+      this.renderExpense(expense);
+    });
+    DOMHelper.clearElements(this.element.resultList);
   }
 }
