@@ -20,10 +20,10 @@
 - [x] `call`
 - [x] `apply`
 - [x] `bind`
-- [ ] Implement `myCall`
-- [ ] Implement `myApply`
-- [ ] Implement `myBind`
-- [ ] `this` with `new`
+- [x] Implement `myCall`
+- [x] Implement `myApply`
+- [x] Implement `myBind`
+- [x] `this` with `new`
 - [ ] `this` in classes
 - [ ] `this` in class fields
 - [ ] `this` in event handlers
