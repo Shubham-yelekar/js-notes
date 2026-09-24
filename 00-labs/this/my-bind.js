@@ -1,4 +1,4 @@
-Function.prototype.myBind = function (thisArg, ...argArray) {
+export default Function.prototype.myBind = function (thisArg, ...argArray) {
   const sym = Symbol()
   let context = thisArg == null ? globalThis : Object(thisArg)
 
