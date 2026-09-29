@@ -64,3 +64,33 @@ Record meaningful bugs or recurring misconceptions. Preserve the original reason
 
 ## 4-5 days  ago : Call , bind, apply and this
 -- Need practice with the this
+
+## 2026-09-29: Arrow `this` taken from the call site
+
+- **Problem:** Mastery test Q1: `const user = { name: 'Asha', arrow: () => this?.name }`. What does `user.arrow()` return?
+- **Mistake:** Answered `"Asha"`, then TypeError. On the arrow inside `nested()`, first guessed TypeError.
+- **Original mental model:** "An arrow gets `this` from the lexical scope where it is called." Also thought an object literal `{ }` provides a `this`.
+- **Correct mental model:** An arrow takes `this` from the nearest enclosing **function** (or module top level) where it is **written**. The call site never matters, and `call`/`apply`/`bind` can't change it. An object literal isn't a function, so it has no `this`.
+- **Category:** Conceptual
+- **Prevention:** For any arrow, point to the nearest `function`/method around it and ask "what was `this` when that ran?"
+- **Follow-up exercise:** Predict `user.arrow() === this` at the top of a file, and an arrow class field called with `.call({})`.
+
+## 2026-09-29: Thought `bind` beats `new`
+
+- **Problem:** Mastery test Q3: `const Bound = Person.bind(obj); const p = new Bound('Ravi')`. What is `p.name`?
+- **Mistake:** Answered `'obj'` ("it is binded first").
+- **Original mental model:** A bound `this` is permanent, even under `new`.
+- **Correct mental model:** `new` wins over `bind`. It creates a fresh object and uses it as `this`, so `p.name` is `'Ravi'` and `obj` isn't touched. Order from strongest: `new` > `bind`/`call`/`apply` > `obj.method()` > plain call (`undefined` in strict mode). Arrow functions ignore all of these.
+- **Category:** Conceptual
+- **Prevention:** Check the call for `new` first. Also, if `obj` wasn't changed, `this` wasn't `obj`.
+- **Follow-up exercise:** Predict `p.name`, `obj.name` and `p instanceof Person`. Then check whether your `myBind` handles `new`. (It probably doesn't; native `bind` does.)
+
+## 2026-09-30: Tried to mutate a string, and leaked an undeclared variable
+
+- **Problem:** `reverseString` with a two-pointer swap returned `'hello'` unchanged.
+- **Mistake:** (1) Swapped characters with `s[b] = s[a]` on a string. (2) Wrote `s = str` with no `let`/`const`.
+- **Original mental model:** (1) Strings can be changed by index like arrays. Predicted `x[0] = 'b'` on `'cat'` gives `'bat'`. (2) "JS puts `var` on an undeclared variable, so it goes global."
+- **Correct mental model:** (1) Strings are immutable. Index assignment is silently ignored (sloppy mode). Convert with `split('')` → mutate the array → `join('')`. (2) JS doesn't add `var` (a `var` inside a function would stay local). In sloppy mode, assigning to an undeclared name creates `globalThis.s`. In strict mode it throws `ReferenceError`.
+- **Category:** Conceptual
+- **Prevention:** Declare every variable with `const`/`let`. Before mutating by index, ask "is this an array or a string?"
+- **Follow-up exercise:** Predict `'use strict'; const x = 'cat'; x[0] = 'b'`. (Hint: strict mode changes this one too.)

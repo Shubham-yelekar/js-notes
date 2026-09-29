@@ -169,10 +169,13 @@ AI will switch to normal engineering mode. The learning rules only apply when yo
 ## How It's Organized
 
 ```
-CLAUDE.md                      # Global learning philosophy
+CLAUDE.md                      # Global learning philosophy + plan rules
+FRAMEWORK.md                   # Cadence: 28h/week, 2-week modules, 25/70/5 split
+SYLLABUS.md                    # What to learn, split into modules
 .claude/
 └── commands/                  # 12 user-facing workflows (slash commands)
-learning/                      # Optional learning logs
+00-labs/<topic>/               # Your code, one folder per topic
+learning/                      # Learning logs + progress.md (hours, scores)
 ```
 
 ---
