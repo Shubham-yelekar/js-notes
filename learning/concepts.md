@@ -31,3 +31,15 @@ Record durable understanding, not every definition encountered.
   }
   ```
 - **Related concepts:** `call`/`apply`/`bind`, prototype chain, `Object.create`, arrow functions and lexical `this`, `this` in classes (next)
+These are the function invocation methods that can be applied on an object.
+
+That object become the "this" for the function to run with context to.
+
+If no context is assigned or missing it points to the global object eg- window object in browser.
+
+The call is method of the a function that can be invoked and passed the Object , rest of variables.
+
+The apply is method of the a function that can be invoked and passed the Object , and array of variables.
+
+bind in other hand bounds the function to the object that can be called again and again and will point to same object.
+

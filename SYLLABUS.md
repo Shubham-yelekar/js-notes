@@ -24,15 +24,15 @@
 - [x] Implement `myApply`
 - [x] Implement `myBind`
 - [x] `this` with `new`
-- [ ] `this` in classes
-- [ ] `this` in class fields
-- [ ] `this` in event handlers
+- [x] `this` in classes
+- [x] `this` in class fields
+- [x] `this` in event handlers
 
 ### Mastery test
 
 - [ ] Predict `this` before running code
 - [ ] Explain every result without looking at notes
-- [ ] Reimplement `call/apply/bind` from blank
+- [x] Reimplement `call/apply/bind` from blank
 
 ---
 

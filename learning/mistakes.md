@@ -61,3 +61,6 @@ Record meaningful bugs or recurring misconceptions. Preserve the original reason
 - **Category:** Syntax
 - **Prevention:** Test bound functions with preset and call-time args together.
 - **Follow-up exercise:** Reimplement `myBind` from a blank file (it's already a Mastery test item).
+
+## 4-5 days  ago : Call , bind, apply and this
+-- Need practice with the this
