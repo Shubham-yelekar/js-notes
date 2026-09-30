@@ -8,18 +8,18 @@
 
 ## Roadmap
 
-| Days | Dates | Focus | Status |
-|---|---|---|---|
-| — | 09-17 → 09-29 | M1 Functions, invocation & `this` | ✅ built · 🔁 retest 10-03 |
-| 1–2 | 09-30 → 10-01 | Arrays & strings logic | ▶ current |
-| 3–4 | 10-02 → 10-03 | Objects & data shaping (+ `this` retest) | |
-| 5–6 | 10-04 → 10-05 | Array methods from scratch | |
-| 7 | 10-06 | Recursion | |
-| 8–9 | 10-07 → 10-08 | Closures & higher-order functions | |
-| 10–11 | 10-09 → 10-10 | Async logic | |
-| 12 | 10-11 | Mini project: Shopping Cart | |
-| 13 | 10-12 | Final project: Task Runner | |
-| 14 | 10-13 | Mastery test + review | |
+| Days  | Dates         | Focus                                    | Status                     |
+| ----- | ------------- | ---------------------------------------- | -------------------------- |
+| —     | 09-17 → 09-29 | M1 Functions, invocation & `this`        | ✅ built · 🔁 retest 10-03 |
+| 1–2   | 09-30 → 10-01 | Arrays & strings logic                   | ▶ current                  |
+| 3–4   | 10-02 → 10-03 | Objects & data shaping (+ `this` retest) |                            |
+| 5–6   | 10-04 → 10-05 | Array methods from scratch               |                            |
+| 7     | 10-06         | Recursion                                |                            |
+| 8–9   | 10-07 → 10-08 | Closures & higher-order functions        |                            |
+| 10–11 | 10-09 → 10-10 | Async logic                              |                            |
+| 12    | 10-11         | Mini project: Shopping Cart              |                            |
+| 13    | 10-12         | Final project: Task Runner               |                            |
+| 14    | 10-13         | Mastery test + review                    |                            |
 
 **Lab:** `00-labs/logic/` with one file per day.
 
@@ -29,12 +29,12 @@
 
 ## Days 1–2 — Arrays & strings
 
-- [ ] Reverse a string / reverse each word
-- [ ] Palindrome (ignore case and spaces)
-- [ ] Character frequency count
-- [ ] Anagram check
-- [ ] First non-repeating character
-- [ ] Remove duplicates (without `Set`, then with)
+- [x] Reverse a string / reverse each word
+- [x] Palindrome (ignore case and spaces)
+- [x] Character frequency count
+- [x] Anagram check
+- [x] First non-repeating character
+- [x] Remove duplicates (without `Set`, then with)
 - [ ] Find max / second max
 - [ ] Chunk an array into size `n`
 - [ ] Flatten one level (no `.flat`)

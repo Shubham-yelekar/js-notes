@@ -56,3 +56,13 @@ bind in other hand bounds the function to the object that can be called again an
 - **Caveat:** the guarantee depends on the length check matching what the loops count. If the loops skip spaces but the length check doesn't, the guarantee breaks (`'dormitory'` vs `'dirty room'`).
 - **Related concepts:** frequency counter pattern ([charFrequency](../00-labs/logic/charFrequency.js)), early return, truthy/falsy
 
+## 2026-09-30: `for...in` vs `for...of`, and object key order
+
+- **Learner's explanation:** `for...in` gives indices, which are the object's keys. Objects don't keep insertion order for "integer properties", so use a `Map`.
+- **Corrected understanding:**
+  - `for...in` loops over **keys**, and they're always strings (`'0'`, not `0`). `for...of` loops over **values** using the iterator. Plain objects aren't iterable, so `for...of` on one throws.
+  - Plain objects always store keys as strings, and they list integer-like keys first, sorted ascending, then other string keys in insertion order.
+  - A `Map` keeps insertion order for every key and keeps the key's type (`3` stays a number).
+- **Example:** [00-labs/logic/removeDuplicates.js](../00-labs/logic/removeDuplicates.js). `[3, 1, 3, 2]` → `freq = { '1': 1, '2': 1, '3': 2 }` → `[1, 2, 3]`, but the expected result is `[3, 1, 2]`.
+- **Related concepts:** frequency counter pattern, `Object.keys`, `Map`, `Set`, iterators
+

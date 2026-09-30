@@ -94,3 +94,13 @@ Record meaningful bugs or recurring misconceptions. Preserve the original reason
 - **Category:** Conceptual
 - **Prevention:** Declare every variable with `const`/`let`. Before mutating by index, ask "is this an array or a string?"
 - **Follow-up exercise:** Predict `'use strict'; const x = 'cat'; x[0] = 'b'`. (Hint: strict mode changes this one too.)
+
+## 2026-09-30: Used `map[key]` on a `Map`
+
+- **Problem:** `removeDuplicates([3, 1, 3, 2])` returned `[1, 2, 3]` instead of `[3, 1, 2]`. Node printed `Map(0) { '1': 1, '2': 1, '3': 2 }`.
+- **Mistake:** (1) Used a plain object for counting, so integer keys came back sorted. (2) Switched to `new Map()` but still read and wrote with `map[num]`. (3) Started the count at `0` instead of `1`.
+- **Original mental model:** Objects "don't keep insertion order". Also, a `Map` works with `[]` like any other object.
+- **Correct mental model:** Plain objects keep insertion order for string keys but put integer-like keys first, sorted ascending. `map[k]` writes a plain property on the Map object, not a Map entry, so `size` stays 0 and the old object rules still apply. Use `set`/`get`/`has`.
+- **Category:** Syntax/API (Map) + Conceptual (key order)
+- **Prevention:** Check for `Map(0)` in the log. With a `Map`, never use `[]`.
+- **Follow-up exercise:** Predict `const m = new Map(); m['x'] = 1; m.set('y', 2); console.log(m.size, m.get('x'), m.y)`.
