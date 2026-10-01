@@ -104,3 +104,13 @@ Record meaningful bugs or recurring misconceptions. Preserve the original reason
 - **Category:** Syntax/API (Map) + Conceptual (key order)
 - **Prevention:** Check for `Map(0)` in the log. With a `Map`, never use `[]`.
 - **Follow-up exercise:** Predict `const m = new Map(); m['x'] = 1; m.set('y', 2); console.log(m.size, m.get('x'), m.y)`.
+
+## 2026-10-01: Used `-Infinity` as a sentinel that the input can actually contain
+
+- **Problem:** `secondMax([-Infinity, 5])` returned `5` instead of `-Infinity`.
+- **Mistake:** Initialised `hi = -Infinity, lo = -Infinity` to mean "nothing seen yet". Then added `hasHi`/`hasLo` booleans to patch it, and finally put `!hasHi &&` into the loop condition, which froze `hi` after the first element.
+- **Original mental model:** `-Infinity` is small enough that every real value beats it, so it's a safe starting point. Separate `has*` flags can fix whatever the sentinel gets wrong.
+- **Correct mental model:** A sentinel has to live **outside** the value domain. `-Infinity` is a legal number, so `-Infinity > -Infinity` is `false` and a real `-Infinity` element is skipped by both branches — indistinguishable from "unset". Using `undefined` works because the array holds numbers. Once `undefined` means unset, `hi === undefined` *is* the flag; the `has*` booleans were duplicate state that drifted out of sync with `hi`/`lo`.
+- **Category:** Conceptual (sentinel values / state duplication)
+- **Prevention:** After picking a sentinel, ask "can the input legally produce this value?" If yes, pick another. Same trap as `-1` for an index and `0` for a count. And when a fix needs a second variable to track what the first should already say, suspect the first variable's representation.
+- **Follow-up exercise:** Write `minPositive(arr)` returning the smallest value `> 0`, or `undefined` if none. Then run it on `[Infinity, 0, -3]` and `[]`. Predict both before running.
