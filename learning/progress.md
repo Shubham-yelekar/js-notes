@@ -1,16 +1,39 @@
 # Progress
 
-Target per module (56h): theory 14h · coding 39h · AI 3h. Log hours at the end of each session; check the split at the end of each week.
+Target: 4–5 h/day, ~30 h/week, ~350 h over 12 weeks. Daily slot breakdown is in [../FRAMEWORK.md](../FRAMEWORK.md#time-budget). Log hours at the end of each session; check the balance on Sunday.
 
-## Modules
+## Weeks
 
-| Module | Dates | Theory | Coding | AI | Mastery score | Status |
-|---|---|---|---|---|---|---|
-| M1 `this` | 2026-09-17 → 09-29 | — | — | — | ~50% (5.5/11) | Moved on, retest 2026-10-03 |
-| M2 Prototypes & properties | 2026-09-29 → 10-12 | 0h | 0h | 0h | | Current |
+| Wk | Dates | Hours | Gate | Project | Status |
+| --- | --- | ---: | --- | --- | --- |
+| 1 | 10-05 → 10-11 | | G1 | P0a | ▶ current |
+| 2 | 10-12 → 10-18 | | G2 | P0b–c | |
+| 3 | 10-19 → 10-25 | | G3 | Dashboard | |
+| 4 | 10-26 → 11-01 | | | P1 | |
+| 5 | 11-02 → 11-08 | | | P2 | |
+| 6 | 11-09 → 11-15 | | | P2 deployed | |
+| 7 | 11-16 → 11-22 | | G4 | P3 | |
+| 8 | 11-23 → 11-29 | | | P4 start | |
+| 9 | 11-30 → 12-06 | | | P4 | |
+| 10 | 12-07 → 12-13 | | | P5 | |
+| 11 | 12-14 → 12-20 | | | P5 deployed | |
+| 12 | 12-21 → 12-27 | | G5 | P6 | |
 
-## Weekly log — M2
+## Daily log
 
-| Date | Theory | Coding | AI | Notes |
-|---|---|---|---|---|
-| | | | | |
+| Date | Hrs | Depth | Build | AI / Systems | ML | Note |
+| --- | ---: | --- | --- | --- | --- | --- |
+| | | | | | | |
+
+## Prior work (pre-plan)
+
+| Module | Dates | Outcome |
+| --- | --- | --- |
+| Functions, invocation, `this` | 2026-09-17 → 09-29 | Built. Mastery ~50% (5.5/11) → retest **3/3 (100%)** on 2026-10-05. Cleared. |
+| Logic drills (strings/arrays, partial) | 2026-09-30 → 10-04 | 7 of 15 solved in `00-labs/logic/`. Carried into [../tracks/depth.md](../tracks/depth.md#logic-drills). |
+
+## Retro
+
+One line per week on Sunday: what moved, what didn't, what to change.
+
+- **Wk 1:**

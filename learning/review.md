@@ -9,9 +9,9 @@ Keep short retrieval prompts or review metadata for meaningful topics.
 - **Confidence:**
 - **Next review or exercise:**
 
-## 2026-09-29: `this` retest (M1)
+## 2026-09-29: `this` retest (M1) — ✅ cleared
 
 - **Recall prompt:** 3 fresh prediction snippets, no notes, no running code. Must include: an arrow inside an object literal vs inside a method, `call` on an arrow class field, and `new` on a bound function.
-- **Last reviewed:** 2026-09-29, mastery test ~50%. See the 2026-09-29 entries in [mistakes.md](mistakes.md).
-- **Confidence:** Low on arrow `this` and on which rule wins.
-- **Next review or exercise:** 2026-10-03. Pass at 80%+ to tick the M1 mastery items.
+- **Last reviewed:** 2026-10-05 — **3/3 (100%)**, up from ~50% on 2026-09-29. Values and governing rule correct on all three, including `new` > `bind` precedence.
+- **Confidence:** High. Two wording-level sharpenings only: an arrow has *no* `this` binding (it isn't a capture), and an arrow class field is created inside the constructor, which is why `call` on it is a no-op.
+- **Next review or exercise:** none scheduled. Untested corners remain in [../tracks/depth.md](../tracks/depth.md#this--invocation): detached methods, callbacks, strict vs sloppy default binding.

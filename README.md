@@ -169,14 +169,24 @@ AI will switch to normal engineering mode. The learning rules only apply when yo
 ## How It's Organized
 
 ```
-CLAUDE.md                      # Global learning philosophy + plan rules
-FRAMEWORK.md                   # Cadence: 28h/week, 2-week modules, 25/70/5 split
-SYLLABUS.md                    # What to learn, split into modules
-.claude/
-└── commands/                  # 12 user-facing workflows (slash commands)
-00-labs/<topic>/               # Your code, one folder per topic
+CLAUDE.md                      # Learning philosophy + the two modes
+FRAMEWORK.md                   # Cadence: ~30h/week, 1-week modules, daily slots
+SYLLABUS.md                    # The 12-week schedule — open this daily
+tracks/
+├── depth.md                   # JS/TS internals, logic, DSA   (Depth mode)
+├── breadth.md                 # Backend, frameworks, DBs, prod (Build mode)
+└── ai-systems.md              # LLM eng, RAG, agents, design, ML
+projects/README.md             # The six project specs
+00-labs/
+├── depth/                     # Concept experiments + utility library
+├── logic/                     # Logic drills, one file per problem
+├── dsa/                       # Patterns and data structures
+└── ml/                        # Python / notebook work
 learning/                      # Learning logs + progress.md (hours, scores)
+.claude/commands/              # 12 user-facing workflows (slash commands)
 ```
+
+**Two modes.** Depth tracks (JS/TS, logic, DSA) are tutor-only — AI never writes the solution. Build tracks (full-stack, AI, systems, ML) allow normal engineering help, on the condition that you can explain every file you keep. See [FRAMEWORK.md](FRAMEWORK.md#two-modes).
 
 ---
 

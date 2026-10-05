@@ -19,7 +19,7 @@ Record durable understanding, not every definition encountered.
   4. If the constructor returned an object or function, return that. Otherwise (a primitive, `undefined` or `null`), return the new object.
 
   Arrow functions can't be used with `new` because they have no `prototype` and no own `this`.
-- **Example:** [00-labs/this/new.js](../00-labs/this/new.js)
+- **Example:** [00-labs/depth/new.js](../00-labs/depth/new.js)
   ```js
   function myNew(Constructor, ...args) {
     const obj = Object.create(Constructor.prototype)
@@ -65,4 +65,26 @@ bind in other hand bounds the function to the object that can be called again an
   - A `Map` keeps insertion order for every key and keeps the key's type (`3` stays a number).
 - **Example:** [00-labs/logic/removeDuplicates.js](../00-labs/logic/removeDuplicates.js). `[3, 1, 3, 2]` → `freq = { '1': 1, '2': 1, '3': 2 }` → `[1, 2, 3]`, but the expected result is `[3, 1, 2]`.
 - **Related concepts:** frequency counter pattern, `Object.keys`, `Map`, `Set`, iterators
+
+## 2026-10-05: An arrow function has no `this` binding at all
+
+- **Learner's explanation:** "It captures `this` from the surrounding scope where the object literal is created."
+- **Corrected understanding:** Close, but "captures" implies the arrow holds a `this` of its own. It doesn't — an arrow has **no `this` binding whatsoever**, so `this` inside it is an ordinary identifier resolved up the scope chain, exactly like any other variable. The binding rules (`new` / explicit / implicit / default) never run for an arrow, because there is nothing to bind.
+
+  Three consequences, which is why this one reframe is worth more than the three rules it replaces:
+  1. **A method-position arrow ignores the dot.** `{ count: 10, inc: () => this.count++ }` — `this` resolves to the enclosing scope (`window` in a non-strict script), so `window.count` gets `undefined++` → `NaN` and `count` is never touched.
+  2. **`call`/`apply`/`bind` on an arrow are silent no-ops.** They set a `this` the body never consults. No error, no effect.
+  3. **An arrow class field resolves `this` to the instance** — field initializers run inside the constructor, where `this` is the new object. This is why the auto-bound-handler pattern works, and why `.call(other)` on it still returns the instance's value.
+- **Example:**
+  ```js
+  class Timer {
+    label = 'timer'
+    arrow = () => this.label      // created in the constructor; this === instance
+    method() { return this.label }
+  }
+  const t = new Timer()
+  t.arrow.call({ label: 'other' })   // 'timer'  — call ignored
+  t.method.call({ label: 'other' })  // 'other'  — explicit binding wins
+  ```
+- **Related concepts:** the call rules and their precedence (`new` > explicit > implicit > default), scope chain and lexical scope, `new` on a bound function, why arrows can't be used with `new` (see the 2026-09-23 entry)
 
