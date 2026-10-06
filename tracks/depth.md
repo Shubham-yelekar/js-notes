@@ -106,7 +106,9 @@ Pull 2–4 per day. Rule: blank file, tests first, no AI. Existing solutions are
 - [x] Character frequency count
 - [x] Anagram check
 - [x] First non-repeating character
-- [ ] Longest word · capitalize each word · title case with exceptions
+- [x] Capitalize each word
+- [x] Longest word
+- [ ] Title case with exceptions
 - [ ] Compress a string (`aaabb` → `a3b2`) and decompress it
 - [ ] Longest substring without repeating characters
 - [ ] Word frequency top-k from a paragraph
@@ -117,9 +119,10 @@ Pull 2–4 per day. Rule: blank file, tests first, no AI. Existing solutions are
 
 - [x] Remove duplicates, with and without `Set`
 - [x] Max and second max in one pass
-- [ ] Chunk into size `n` · flatten one level without `.flat`
+- [x] Chunk into size `n`
+- [x] Flatten one level without `.flat`
 - [ ] Rotate by `k` — extra array, then in place
-- [ ] Two-sum: brute force, then a hash map
+- [x] Two-sum: brute force, then a hash map
 - [ ] Move zeros to the end, preserving order, in place
 - [ ] Max subarray sum (Kadane)
 - [ ] Intersection and union of two arrays
