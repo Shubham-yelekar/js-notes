@@ -121,10 +121,10 @@ Pull 2–4 per day. Rule: blank file, tests first, no AI. Existing solutions are
 - [x] Max and second max in one pass
 - [x] Chunk into size `n`
 - [x] Flatten one level without `.flat`
-- [ ] Rotate by `k` — extra array, then in place
+- [x] Rotate by `k` — extra array ✔; in place still to do
 - [x] Two-sum: brute force, then a hash map
-- [ ] Move zeros to the end, preserving order, in place
-- [ ] Max subarray sum (Kadane)
+- [x] Move zeros to the end, preserving order, in place
+- [x] Max subarray sum — brute force ✔; Kadane one-pass still to do
 - [ ] Intersection and union of two arrays
 - [ ] Merge two sorted arrays · merge overlapping intervals
 - [ ] Array from scratch: `myMap`, `myFilter`, `myReduce` (with and without an initial value), `myFind`, `mySome`, `myEvery`, `myFlat(depth)`
@@ -147,7 +147,9 @@ Pull 2–4 per day. Rule: blank file, tests first, no AI. Existing solutions are
 
 ### Functions & closures
 
-- [ ] Counter with private state
+> These are the Week 1 build (the utility library), not drills. Labs live in `00-labs/depth/`, not `00-labs/logic/`.
+
+- [x] Counter with private state
 - [ ] `once` · `memoize` (with a custom key resolver)
 - [ ] `curry` (fixed and variadic) · `partial`
 - [ ] `compose` · `pipe`

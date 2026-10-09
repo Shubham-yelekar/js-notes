@@ -114,3 +114,22 @@ Record meaningful bugs or recurring misconceptions. Preserve the original reason
 - **Category:** Conceptual (sentinel values / state duplication)
 - **Prevention:** After picking a sentinel, ask "can the input legally produce this value?" If yes, pick another. Same trap as `-1` for an index and `0` for a count. And when a fix needs a second variable to track what the first should already say, suspect the first variable's representation.
 - **Follow-up exercise:** Write `minPositive(arr)` returning the smallest value `> 0`, or `undefined` if none. Then run it on `[Infinity, 0, -3]` and `[]`. Predict both before running.
+
+## 2026-10-08: Returned `count` as an object property and froze it
+
+- **Problem:** `makeCounter(10)` then `inc(); inc(); dec()` printed `c.count === 10` but `c.value() === 11`. Same name, two different numbers, in the same object.
+- **Mistake:** Added `count,` as a shorthand property on the returned object — meaning to expose the current value, and also breaking the drill's requirement that the state be unreachable.
+- **Original mental model:** "A closure is the function keeping the memory of the variable with it." Phrased that way, a closure sounds like it holds the variable's *value*, so putting `count` on the object looks like another way to read the same thing.
+- **Correct mental model:** Each **call** to `makeCounter` creates one scope record holding one `count` binding. Every function returned from that call holds a **reference** to that record, which is why `inc` and `value` see each other's writes. `count,` in an object literal is an ordinary read — it evaluates once, at object-construction time, and copies the number. It cannot track later writes because a number isn't a reference to anything. Closures capture **bindings**; object properties capture **values**. The only way to expose live state is through a function (`value()`) or a getter.
+- **Category:** Conceptual (bindings vs values) + encapsulation
+- **Prevention:** To expose closure state, return a function or a getter, never a plain property. If a property and a method report the same thing, suspect the property is a stale snapshot.
+- **Follow-up exercise:** Predict all four logs, no running code:
+  ```js
+  function make() {
+    let n = 0
+    return { n, bump: () => ++n, read: () => n, get live() { return n } }
+  }
+  const o = make()
+  o.bump()
+  console.log(o.n, o.read(), o.live, make().read())
+  ```

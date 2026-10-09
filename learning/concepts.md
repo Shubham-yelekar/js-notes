@@ -88,3 +88,12 @@ bind in other hand bounds the function to the object that can be called again an
   ```
 - **Related concepts:** the call rules and their precedence (`new` > explicit > implicit > default), scope chain and lexical scope, `new` on a bound function, why arrows can't be used with `new` (see the 2026-09-23 entry)
 
+
+## 2026-10-08: Seeding a running max with `arr[0]` vs `0` is a contract decision
+
+- **Learner's explanation:** "`res = 0` will always be bigger than negative numbers."
+- **Corrected understanding:** Right, and the reason generalizes. Seeding a max accumulator with `0` quietly asserts *the empty subarray is a legal answer and its sum is 0*. For `[-3, -1, -2]` that returns `0`, which is not the sum of any real subarray; seeding with `arr[0]` forces the answer to be a subarray of at least one element, giving `-1`. The rule: **seed an extremum from the data, not from a convenient literal** — a literal seed is an unstated assumption about which candidates are allowed.
+
+  Noticed in passing: guarding `[]` with `return 0` while returning `-1` for all-negatives mixes both contracts in one function. Defensible either way, but the function should be able to state its contract in one sentence.
+- **Example:** [00-labs/logic/maxSubarraySum.js](../00-labs/logic/maxSubarraySum.js). `maxSubarraySum([-3, -1, -2])` → `-1` with `res = arr[0]`, but `0` with `res = 0`.
+- **Related concepts:** Kadane's algorithm (same seeding trap in the one-pass form), `Math.max()` with no arguments returns `-Infinity`, accumulator initialization, the comma operator (`for (let i = 0; i, i < n; i++)` works because `a, b` evaluates `a`, discards it, and yields `b`)

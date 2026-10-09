@@ -23,7 +23,7 @@ Target: 4–5 h/day, ~30 h/week, ~350 h over 12 weeks. Daily slot breakdown is i
 
 | Date | Hrs | Depth | Build | AI / Systems | ML | Note |
 | --- | ---: | --- | --- | --- | --- | --- |
-| | | | | | | |
+| 10-08 | ? | Comma operator; max-subarray seeding; closures capture bindings not values | `maxSubarraySum` brute force ✔, `makeCounter` ✔; 7 utility stubs scaffolded in `00-labs/depth/` | | | Logic drills audited: 3 array items closed, 27 still open. Week 1 scope cut to Functions & closures. |
 
 ## Prior work (pre-plan)
 
