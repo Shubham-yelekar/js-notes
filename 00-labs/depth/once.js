@@ -12,3 +12,29 @@
 // 2. Solve without AI. 3. One-line comment explaining your approach.
 
 // Tests
+
+function once(fn) {
+  let ranOnce = false,
+    value
+  return function (...args) {
+    console.log('this inside wrapper:', this) // ← look at this line
+    if (!ranOnce) {
+      value = fn.apply(this, args)
+      ranOnce = true
+    }
+    return value
+  }
+}
+const obj = {
+  n: 1,
+  getN() {
+    return this.n
+  },
+}
+const shared = once(obj.getN)
+
+const a = { n: 1, getN: shared }
+const b = { n: 99, getN: shared }
+
+console.log(a.getN.call(b)) // ?
+console.log(a.getN())
